@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Debug del Servidor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Debug del Servidor de Trivia</h1>
+      <p class="subtitle">
+        Información interna útil para la defensa de redes.
+      </p>
+      <p>
+        <a href="{{ url_for('home') }}" style="color:#a5b4fc;">⬅ Volver al inicio</a>
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Estado interno</h2>
+        <ul class="note">
+          <li>Total de preguntas configuradas: <strong>{{ info.total_preguntas_configuradas }}</strong></li>
+          <li>Archivo de scores (modo solo): <strong>{{ info.archivo_scores }}</strong></li>
+          <li>Archivo de eventos (modo solo): <strong>{{ info.archivo_eventos }}</strong></li>
+          <li>Total de partidas registradas (modo solo): <strong>{{ info.total_partidas_registradas }}</strong></li>
+        </ul>
+        <p class="note">
+          Estos datos muestran cómo el servidor guarda información en disco
+          (archivos CSV) y cómo podrías auditar el uso del sistema.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Proyecto de Redes – Vista de debug para explicación técnica.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scoreboard – Modo Solo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Scoreboard – Modo Solo</h1>
+      <p class="subtitle">
+        Historial de partidas jugadas en el modo 1 jugador.
+      </p>
+      <p>
+        <a href="{{ url_for('home') }}" style="color:#a5b4fc;">⬅ Volver al inicio</a>
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Partidas registradas</h2>
+        {% if rows %}
+        <div class="answers-detail">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha/Hora</th>
+                <th>Jugador</th>
+                <th>Puntaje</th>
+                <th>IP</th>
+                <th>Navegador</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in rows %}
+              <tr>
+                <td>{{ row.timestamp }}</td>
+                <td>{{ row.player_name }}</td>
+                <td>{{ row.score }} / {{ row.total }}</td>
+                <td>{{ row.client_ip }}</td>
+                <td>{{ row.user_agent }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <p class="note">Todavía no hay partidas registradas.</p>
+        {% endif %}
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Proyecto de Redes – Scoreboard almacenado en archivo CSV.</p>
+    </footer>
+  </body>
+</html>

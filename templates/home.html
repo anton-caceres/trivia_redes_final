@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trivia en Red – Modos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Trivia en Red</h1>
+      <p class="subtitle">
+        Elegí cómo jugar: modo individual contra el servidor o modo VS 1 vs 1
+        en red.
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Modos de juego</h2>
+
+        <div class="mode-grid">
+          <div class="mode-card">
+            <h3>🎯 Modo 1 jugador</h3>
+            <p>
+              Jugás vos sola/o, el servidor corrige tus respuestas, registra tu
+              IP y guarda el resultado en el scoreboard.
+            </p>
+            <a href="{{ url_for('solo_view') }}" class="mode-btn">
+              Jugar modo solo
+            </a>
+          </div>
+
+          <div class="mode-card">
+            <h3>⚔️ Modo VS 1 vs 1</h3>
+            <p>
+              Dos jugadores se conectan al mismo servidor. Se turnan para
+              responder y gana quien más preguntas correctas obtenga.
+            </p>
+            <a href="{{ url_for('vs_view') }}" class="mode-btn secondary">
+              Jugar modo VS
+            </a>
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:16px;">
+          Ambos modos usan el mismo servidor Flask, expuesto por IP y puerto.
+        </p>
+
+        <p class="note">
+          <a href="{{ url_for('scoreboard') }}" style="color:#a5b4fc;">🏆 Ver
+            scoreboard (modo solo)</a>
+          ·
+          <a href="{{ url_for('debug_view') }}" style="color:#a5b4fc;">🛠 Ver
+            debug del servidor</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Proyecto de Redes – Servidor de trivia multi-modo.</p>
+    </footer>
+  </body>
+</html>

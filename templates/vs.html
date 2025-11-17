@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trivia en Red – Modo VS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Trivia en Red – Modo VS</h1>
+      <p class="subtitle">
+        Dos jugadores se conectan al mismo servidor, toman turnos y compiten
+        respondiendo preguntas de redes.
+      </p>
+      <p>
+        <a href="{{ url_for('home') }}" style="color:#a5b4fc;">
+          ⬅ Volver al inicio
+        </a>
+      </p>
+    </header>
+
+    <main class="container">
+      <!-- Configuración / Lobby -->
+      <section id="setup-section" class="card">
+        <h2>Unirse a la partida</h2>
+        <label for="player-name">Tu nombre / alias</label>
+        <input
+          type="text"
+          id="player-name"
+          placeholder="Ej: Anto, Profe, RedTeam..."
+        />
+
+        <button id="join-btn">Unirme a la sala</button>
+        <p class="note">
+          La sala admite exactamente 2 jugadores (A y B). Una vez conectados
+          ambos, el servidor mezcla las preguntas y comienza la partida.
+        </p>
+
+        <p class="note" id="join-status"></p>
+      </section>
+
+      <!-- Estado de red -->
+      <section id="status-section" class="status-bar">
+        <span id="network-status" class="status status-ok">
+          🟢 Intentando conectar con el servidor VS...
+        </span>
+      </section>
+
+      <!-- Juego -->
+      <section id="game-section" class="card hidden">
+        <div class="game-header">
+          <div>
+            <strong>Tu rol: </strong>
+            <span id="my-role-label"></span>
+          </div>
+          <div>
+            <strong>Turno actual: </strong>
+            <span id="turn-label"></span>
+          </div>
+        </div>
+
+        <div class="players-info">
+          <div class="player-card" id="player-a-card">
+            <h3>Jugador A</h3>
+            <p>Nombre: <span id="player-a-name">-</span></p>
+            <p>Puntos: <span id="player-a-score">0</span></p>
+          </div>
+          <div class="player-card" id="player-b-card">
+            <h3>Jugador B</h3>
+            <p>Nombre: <span id="player-b-name">-</span></p>
+            <p>Puntos: <span id="player-b-score">0</span></p>
+          </div>
+        </div>
+
+        <div id="waiting-message" class="note">
+          Esperando a que se conecten ambos jugadores...
+        </div>
+
+        <div id="question-area" class="hidden">
+          <div id="question-meta" class="question-meta">
+            <span id="question-category"></span>
+            <span id="question-difficulty"></span>
+          </div>
+          <h3 id="question-text"></h3>
+          <div id="options-container" class="options"></div>
+        </div>
+
+        <p id="game-event" class="note"></p>
+
+        <div class="game-footer">
+          <button id="reset-btn" class="admin-btn-inline">
+            🔄 Resetear partida (admin)
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Proyecto de Redes – Modo VS 1 vs 1 sobre el mismo servidor y banco de
+        preguntas.
+      </p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/vs.js') }}"></script>
+  </body>
+</html>
